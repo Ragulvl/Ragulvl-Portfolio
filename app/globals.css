@@ -1,0 +1,402 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --background: 0 0% 5%;
+  --foreground: 0 0% 95%;
+  --card: 0 0% 8%;
+  --card-foreground: 0 0% 95%;
+  --popover: 0 0% 5%;
+  --popover-foreground: 0 0% 95%;
+  --primary: 32 60% 50%;
+  --primary-foreground: 0 0% 5%;
+  --secondary: 30 30% 20%;
+  --secondary-foreground: 0 0% 95%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 60%;
+  --accent: 32 40% 25%;
+  --accent-foreground: 0 0% 95%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 95%;
+  --border: 0 0% 15%;
+  --input: 0 0% 15%;
+  --ring: 32 60% 50%;
+  --radius: 0.75rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #0d0d0d;
+  color: #f5f5f5;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ========== CUSTOM SCROLLBAR - Warm Theme ========== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d0d0d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #D4A574, #B8956F);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #E5B685, #C9A680);
+}
+
+/* ========== SELECTION - Warm Theme ========== */
+::selection {
+  background: rgba(212, 165, 116, 0.3);
+  color: white;
+}
+
+/* ========== ANIMATED GRADIENTS ========== */
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes gradient-y {
+  0%, 100% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 15s ease infinite;
+}
+
+.animate-gradient-y {
+  background-size: 200% 200%;
+  animation: gradient-y 15s ease infinite;
+}
+
+/* ========== GLOW EFFECTS - Warm Theme ========== */
+.glow-amber {
+  box-shadow: 
+    0 0 20px rgba(212, 165, 116, 0.4),
+    0 0 40px rgba(212, 165, 116, 0.2),
+    0 0 60px rgba(212, 165, 116, 0.1);
+}
+
+.glow-orange {
+  box-shadow: 
+    0 0 20px rgba(184, 149, 111, 0.4),
+    0 0 40px rgba(184, 149, 111, 0.2),
+    0 0 60px rgba(184, 149, 111, 0.1);
+}
+
+.text-glow-amber {
+  text-shadow: 
+    0 0 10px rgba(212, 165, 116, 0.8),
+    0 0 20px rgba(212, 165, 116, 0.6),
+    0 0 30px rgba(212, 165, 116, 0.4),
+    0 0 40px rgba(212, 165, 116, 0.2);
+}
+
+/* ========== SHIMMER EFFECT ========== */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 165, 116, 0.1),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ========== PULSE RING ========== */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+}
+
+/* ========== FLOAT ANIMATIONS ========== */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.float {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* ========== SPOTLIGHT EFFECT ========== */
+.spotlight {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(212, 165, 116, 0.1) 0%,
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+/* ========== MORPHING BLOB ========== */
+@keyframes blob {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+  }
+  25% {
+    border-radius: 30% 60% 70% 40%/50% 60% 30% 60%;
+  }
+  50% {
+    border-radius: 50% 60% 30% 60%/30% 40% 70% 50%;
+  }
+  75% {
+    border-radius: 60% 40% 50% 40%/70% 30% 50% 60%;
+  }
+}
+
+.blob {
+  animation: blob 10s ease-in-out infinite;
+}
+
+/* ========== TYPING CURSOR ========== */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  background: #D4A574;
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+/* ========== CARD HOVER EFFECT ========== */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-10px);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 60px rgba(212, 165, 116, 0.1);
+}
+
+/* ========== GLASS EFFECT ========== */
+.glass {
+  background: rgba(13, 13, 13, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ========== WARM NEON TEXT ========== */
+.neon-text-warm {
+  color: #fff;
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #D4A574,
+    0 0 82px #D4A574,
+    0 0 92px #D4A574;
+}
+
+/* ========== PERSPECTIVE GRID - Warm ========== */
+.perspective-grid {
+  background-image: 
+    linear-gradient(rgba(212, 165, 116, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 165, 116, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  transform: perspective(500px) rotateX(60deg);
+  transform-origin: center top;
+}
+
+/* ========== 3D TRANSFORM ========== */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* ========== AURORA BACKGROUND - Warm ========== */
+@keyframes aurora {
+  0%, 100% {
+    background-position: 50% 50%, 50% 50%;
+  }
+  25% {
+    background-position: 0% 100%, 100% 0%;
+  }
+  50% {
+    background-position: 100% 0%, 0% 100%;
+  }
+  75% {
+    background-position: 0% 0%, 100% 100%;
+  }
+}
+
+.aurora-bg {
+  background: 
+    radial-gradient(ellipse at 20% 80%, rgba(212, 165, 116, 0.1), transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(184, 149, 111, 0.1), transparent 50%);
+  background-size: 150% 150%;
+  animation: aurora 20s ease infinite;
+}
+
+/* ========== GRAIN TEXTURE ========== */
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+/* ========== IMAGE FRAME STYLES ========== */
+.profile-frame {
+  position: relative;
+}
+
+.profile-frame::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #D4A574, #B8956F, #C9A86C, #D4A574);
+  z-index: -1;
+  animation: rotate-gradient 4s linear infinite;
+}
+
+@keyframes rotate-gradient {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========== WARM COLOR PALETTE ========== */
+.bg-warm-900 { background-color: #0d0d0d; }
+.bg-warm-800 { background-color: #171717; }
+.bg-warm-700 { background-color: #262626; }
+.bg-warm-600 { background-color: #404040; }
+
+.text-warm-100 { color: #f5f5f5; }
+.text-warm-200 { color: #e5e5e5; }
+.text-warm-300 { color: #d4d4d4; }
+.text-warm-400 { color: #a3a3a3; }
+.text-warm-500 { color: #737373; }
+
+.text-amber-warm { color: #D4A574; }
+.text-orange-warm { color: #C9A86C; }
+.text-gold-warm { color: #B8956F; }
+
+.border-warm { border-color: rgba(212, 165, 116, 0.2); }
