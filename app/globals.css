@@ -37,7 +37,8 @@ html {
   scroll-behavior: smooth;
 }
 
-html.lenis, html.lenis body {
+html.lenis,
+html.lenis body {
   height: auto;
 }
 
@@ -99,18 +100,24 @@ body {
 
 /* ========== ANIMATED GRADIENTS ========== */
 @keyframes gradient-x {
-  0%, 100% {
+
+  0%,
+  100% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
 }
 
 @keyframes gradient-y {
-  0%, 100% {
+
+  0%,
+  100% {
     background-position: 50% 0%;
   }
+
   50% {
     background-position: 50% 100%;
   }
@@ -128,21 +135,21 @@ body {
 
 /* ========== GLOW EFFECTS - Warm Theme ========== */
 .glow-amber {
-  box-shadow: 
+  box-shadow:
     0 0 20px rgba(212, 165, 116, 0.4),
     0 0 40px rgba(212, 165, 116, 0.2),
     0 0 60px rgba(212, 165, 116, 0.1);
 }
 
 .glow-orange {
-  box-shadow: 
+  box-shadow:
     0 0 20px rgba(184, 149, 111, 0.4),
     0 0 40px rgba(184, 149, 111, 0.2),
     0 0 60px rgba(184, 149, 111, 0.1);
 }
 
 .text-glow-amber {
-  text-shadow: 
+  text-shadow:
     0 0 10px rgba(212, 165, 116, 0.8),
     0 0 20px rgba(212, 165, 116, 0.6),
     0 0 30px rgba(212, 165, 116, 0.4),
@@ -154,18 +161,17 @@ body {
   0% {
     background-position: -200% 0;
   }
+
   100% {
     background-position: 200% 0;
   }
 }
 
 .shimmer {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(212, 165, 116, 0.1),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(212, 165, 116, 0.1),
+      transparent);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
 }
@@ -176,10 +182,12 @@ body {
     transform: scale(0.8);
     opacity: 0.8;
   }
+
   50% {
     transform: scale(1.2);
     opacity: 0;
   }
+
   100% {
     transform: scale(0.8);
     opacity: 0.8;
@@ -188,9 +196,12 @@ body {
 
 /* ========== FLOAT ANIMATIONS ========== */
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-15px);
   }
@@ -213,11 +224,9 @@ body {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(
-    circle at center,
-    rgba(212, 165, 116, 0.1) 0%,
-    transparent 50%
-  );
+  background: radial-gradient(circle at center,
+      rgba(212, 165, 116, 0.1) 0%,
+      transparent 50%);
   opacity: 0;
   transition: opacity 0.3s;
   pointer-events: none;
@@ -229,15 +238,20 @@ body {
 
 /* ========== MORPHING BLOB ========== */
 @keyframes blob {
-  0%, 100% {
+
+  0%,
+  100% {
     border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
   }
+
   25% {
     border-radius: 30% 60% 70% 40%/50% 60% 30% 60%;
   }
+
   50% {
     border-radius: 50% 60% 30% 60%/30% 40% 70% 50%;
   }
+
   75% {
     border-radius: 60% 40% 50% 40%/70% 30% 50% 60%;
   }
@@ -249,9 +263,12 @@ body {
 
 /* ========== TYPING CURSOR ========== */
 @keyframes blink {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }
@@ -273,7 +290,7 @@ body {
 
 .card-hover:hover {
   transform: translateY(-10px);
-  box-shadow: 
+  box-shadow:
     0 20px 40px rgba(0, 0, 0, 0.3),
     0 0 60px rgba(212, 165, 116, 0.1);
 }
@@ -300,7 +317,7 @@ body {
 
 /* ========== PERSPECTIVE GRID - Warm ========== */
 .perspective-grid {
-  background-image: 
+  background-image:
     linear-gradient(rgba(212, 165, 116, 0.1) 1px, transparent 1px),
     linear-gradient(90deg, rgba(212, 165, 116, 0.1) 1px, transparent 1px);
   background-size: 50px 50px;
@@ -323,22 +340,27 @@ body {
 
 /* ========== AURORA BACKGROUND - Warm ========== */
 @keyframes aurora {
-  0%, 100% {
+
+  0%,
+  100% {
     background-position: 50% 50%, 50% 50%;
   }
+
   25% {
     background-position: 0% 100%, 100% 0%;
   }
+
   50% {
     background-position: 100% 0%, 0% 100%;
   }
+
   75% {
     background-position: 0% 0%, 100% 100%;
   }
 }
 
 .aurora-bg {
-  background: 
+  background:
     radial-gradient(ellipse at 20% 80%, rgba(212, 165, 116, 0.1), transparent 50%),
     radial-gradient(ellipse at 80% 20%, rgba(184, 149, 111, 0.1), transparent 50%);
   background-size: 150% 150%;
@@ -347,16 +369,47 @@ body {
 
 /* ========== GRAIN TEXTURE ========== */
 @keyframes grain {
-  0%, 100% { transform: translate(0, 0); }
-  10% { transform: translate(-5%, -10%); }
-  20% { transform: translate(-15%, 5%); }
-  30% { transform: translate(7%, -25%); }
-  40% { transform: translate(-5%, 25%); }
-  50% { transform: translate(-15%, 10%); }
-  60% { transform: translate(15%, 0%); }
-  70% { transform: translate(0%, 15%); }
-  80% { transform: translate(3%, 35%); }
-  90% { transform: translate(-10%, 10%); }
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  10% {
+    transform: translate(-5%, -10%);
+  }
+
+  20% {
+    transform: translate(-15%, 5%);
+  }
+
+  30% {
+    transform: translate(7%, -25%);
+  }
+
+  40% {
+    transform: translate(-5%, 25%);
+  }
+
+  50% {
+    transform: translate(-15%, 10%);
+  }
+
+  60% {
+    transform: translate(15%, 0%);
+  }
+
+  70% {
+    transform: translate(0%, 15%);
+  }
+
+  80% {
+    transform: translate(3%, 35%);
+  }
+
+  90% {
+    transform: translate(-10%, 10%);
+  }
 }
 
 /* ========== IMAGE FRAME STYLES ========== */
@@ -378,25 +431,61 @@ body {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
 
 /* ========== WARM COLOR PALETTE ========== */
-.bg-warm-900 { background-color: #0d0d0d; }
-.bg-warm-800 { background-color: #171717; }
-.bg-warm-700 { background-color: #262626; }
-.bg-warm-600 { background-color: #404040; }
+.bg-warm-900 {
+  background-color: #0d0d0d;
+}
 
-.text-warm-100 { color: #f5f5f5; }
-.text-warm-200 { color: #e5e5e5; }
-.text-warm-300 { color: #d4d4d4; }
-.text-warm-400 { color: #a3a3a3; }
-.text-warm-500 { color: #737373; }
+.bg-warm-800 {
+  background-color: #171717;
+}
 
-.text-amber-warm { color: #D4A574; }
-.text-orange-warm { color: #C9A86C; }
-.text-gold-warm { color: #B8956F; }
+.bg-warm-700 {
+  background-color: #262626;
+}
 
-.border-warm { border-color: rgba(212, 165, 116, 0.2); }
+.bg-warm-600 {
+  background-color: #404040;
+}
+
+.text-warm-100 {
+  color: #f5f5f5;
+}
+
+.text-warm-200 {
+  color: #e5e5e5;
+}
+
+.text-warm-300 {
+  color: #d4d4d4;
+}
+
+.text-warm-400 {
+  color: #a3a3a3;
+}
+
+.text-warm-500 {
+  color: #737373;
+}
+
+.text-amber-warm {
+  color: #D4A574;
+}
+
+.text-orange-warm {
+  color: #C9A86C;
+}
+
+.text-gold-warm {
+  color: #B8956F;
+}
+
+.border-warm {
+  border-color: rgba(212, 165, 116, 0.2);
+}

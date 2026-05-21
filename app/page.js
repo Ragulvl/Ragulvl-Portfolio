@@ -10,7 +10,7 @@ import Lenis from 'lenis'
 import {
   Mail, Phone, MapPin, Github, Linkedin,
   Send, ArrowDown, ChevronRight, Download, Briefcase, ArrowUpRight,
-  Menu, X, Award, Trophy, Users
+  Menu, X, Award, Trophy, Users, GraduationCap
 } from 'lucide-react'
 import {
   SiReact, SiNodedotjs, SiPython, SiJavascript, SiTypescript,
@@ -35,6 +35,16 @@ const personalInfo = {
   image: '/Ragulvl-Portfolio/profile.jpg',
 }
 
+const education = {
+  degree: 'B.Tech in Artificial Intelligence & Data Science',
+  college: 'Kalaignar Karunanidhi Institute of Technology (KIT)',
+  location: 'Coimbatore, India',
+  year: '2023 – 2027',
+  cgpa: '7.74',
+}
+
+const aboutBio = 'A passionate Full Stack Developer and AI & Data Science undergraduate at KIT Coimbatore, driven by a love for building scalable, real-world products. With a strong foundation in competitive programming — rated 5★ on CodeChef (Div 1) and 1700+ on LeetCode — I bring problem-solving rigor to every project I build. From end-to-end e-commerce platforms to food-tech applications, I enjoy turning complex ideas into clean, performant code. Always learning, always shipping.'
+
 const projects = [
   {
     id: '01',
@@ -52,7 +62,7 @@ const projects = [
     description: 'Designed and developed scalable backend APIs and database models using Express and MongoDB to support seamless ordering workflows. Implemented real-time user interactions and efficient state management using React and TypeScript. Engineered robust authentication, input validation, and centralized error handling to manage edge cases and ensure reliability.',
     tech: ['React', 'TypeScript', 'Express', 'MongoDB'],
     year: '2025',
-    link: 'https://dinez.onrender.com/',
+    link: 'https://dinez.in/',
   },
   {
     id: '03',
@@ -1398,6 +1408,25 @@ export default function Portfolio() {
         </motion.div>
       </section>
 
+      {/* ========== ABOUT ========== */}
+      <section className="py-20 relative z-10">
+        <div className="container mx-auto px-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="text-amber-400 font-mono text-sm tracking-[0.3em]">ABOUT ME</span>
+              <p className="text-lg md:text-xl text-neutral-400 leading-relaxed mt-6">
+                {aboutBio}
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Marquee */}
       <div className="py-12 border-y border-neutral-800/30 overflow-hidden">
         <MarqueeText direction={1} baseSpeed={15}>
@@ -1510,6 +1539,66 @@ export default function Portfolio() {
                     <span>Took ownership of end-to-end development for the Fusion Forge PCs platform, coordinating frontend features, backend services, and admin functionalities.</span>
                   </motion.li>
                 </ul>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========== EDUCATION ========== */}
+      <section className="py-24 bg-neutral-900/30 relative z-10">
+        <div className="container mx-auto px-6">
+          <div className="mb-12 text-center">
+            <DirectionalText>
+              <span className="text-amber-400 font-mono text-sm tracking-[0.3em]">ACADEMICS</span>
+            </DirectionalText>
+            <DirectionalText className="mt-4">
+              <h2 className="text-5xl md:text-7xl font-black">
+                <StaggerText text="Education" />
+              </h2>
+            </DirectionalText>
+          </div>
+
+          <div className="max-w-3xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative"
+            >
+              <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-amber-500 via-amber-500/50 to-transparent" />
+
+              <motion.div
+                className="ml-6 md:ml-20 p-6 md:p-8 bg-neutral-900/50 border border-neutral-800 rounded-2xl relative"
+                whileHover={{ borderColor: 'rgba(212, 165, 116, 0.3)', x: 5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="absolute -left-[30px] md:-left-[52px] top-8 w-4 h-4 rounded-full bg-amber-500 border-4 border-neutral-950" />
+
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center">
+                      <GraduationCap className="w-5 h-5 text-amber-400" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-white">{education.degree}</h3>
+                      <p className="text-amber-400 font-medium">{education.college}</p>
+                    </div>
+                  </div>
+                  <span className="text-neutral-500 text-sm font-mono">{education.year}</span>
+                </div>
+
+                <div className="flex flex-wrap gap-4 text-sm">
+                  <div className="flex items-center gap-2">
+                    <MapPin className="w-4 h-4 text-amber-400/60" />
+                    <span className="text-neutral-400">{education.location}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-neutral-500">CGPA:</span>
+                    <span className="text-amber-400 font-semibold">{education.cgpa}</span>
+                  </div>
+                </div>
               </motion.div>
             </motion.div>
           </div>
@@ -1803,7 +1892,7 @@ export default function Portfolio() {
               className="flex flex-col md:flex-row items-center gap-2 text-center"
               variants={fadeInUp}
             >
-              <p className="text-neutral-500 text-sm">© 2025 Ragul VL</p>
+              <p className="text-neutral-500 text-sm">© 2026 Ragul VL</p>
               <span className="hidden md:inline text-neutral-700">•</span>
               <motion.p
                 className="text-neutral-600 text-sm font-mono"
