@@ -25,13 +25,13 @@ const personalInfo = {
   lastName: 'VL',
   role: 'Full Stack Developer | AI & Data Science Engineer | Solving Real-World Problems Through Scalable Products',
   tagline: 'B.Tech AI & DS @ KIT Coimbatore',
-  resumeLink: 'https://drive.google.com/file/d/1uJ84qpU4L6nPgN4OcyHsLArWSBNYTjcO/view?usp=drive_link',
+  resumeLink: 'https://drive.google.com/file/d/1_WL7_iCNwi5gKBf169Yq3wdBiXPZLO7B/view?usp=drive_link',
   email: 'ragulkamelash@gmail.com',
   phone: '+91 9626199577',
   location: 'Coimbatore, India',
   github: 'https://github.com/ragulvl',
   linkedin: 'https://linkedin.com/in/ragulvl',
-  image: '/Portfolio/profile.jpg',
+  image: '/Ragulvl-Portfolio/profile.jpg',
 }
 
 const projects = [
@@ -39,7 +39,7 @@ const projects = [
     id: '01',
     title: 'Fusion Forge PCs',
     category: 'E-Commerce',
-    description: 'Full-stack custom PC platform with secure authentication, Razorpay payments, automated email notifications, and role-based admin dashboard',
+    description: 'Built a full-stack custom PC e-commerce platform featuring secure user authentication and an admin dashboard. Integrated Razorpay payment gateway, automated email notifications, and role-based access control. Optimized backend APIs and MongoDB queries to improve performance, scalability, and system reliability.',
     tech: ['React', 'Node.js', 'MongoDB', 'Razorpay'],
     year: '2025',
     link: 'https://fusionforge.onrender.com/',
@@ -48,17 +48,17 @@ const projects = [
     id: '02',
     title: 'Dinez',
     category: 'Food Tech',
-    description: 'Responsive multi-page food ordering app with cart management, real-time UI interactions, and robust error handling',
+    description: 'Designed and developed scalable backend APIs and database models using Express and MongoDB to support seamless ordering workflows. Implemented real-time user interactions and efficient state management using React and TypeScript. Engineered robust authentication, input validation, and centralized error handling to manage edge cases and ensure reliability.',
     tech: ['React', 'TypeScript', 'Express', 'MongoDB'],
     year: '2025',
     link: 'https://dinez.onrender.com/',
   },
   {
     id: '03',
-    title: 'To-Do List API',
-    category: 'Backend',
-    description: 'RESTful task management system with CRUD operations, server-side validation, and layered architecture',
-    tech: ['Java', 'Spring Boot', 'MySQL'],
+    title: 'To-Do List',
+    category: 'Desktop App',
+    description: 'Developed a desktop task management application supporting complete CRUD operations. Implemented server-side validation and an embedded H2 database for reliable data persistence. Followed a layered architecture with UI components, service layers, and repositories to ensure maintainability.',
+    tech: ['Java', 'Swing', 'H2 Database'],
     year: '2025',
     link: 'https://github.com/Ragulvl/todo-app',
   },
@@ -71,9 +71,9 @@ const skillCategories = [
     skills: [
       { name: 'React', icon: SiReact, color: '#61DAFB' },
       { name: 'Next.js', icon: SiNextdotjs, color: '#FFFFFF' },
-      { name: 'Tailwind', icon: SiTailwindcss, color: '#06B6D4' },
       { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
       { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
+      { name: 'Tailwind', icon: SiTailwindcss, color: '#06B6D4' },
     ],
   },
   {
@@ -81,8 +81,8 @@ const skillCategories = [
     skills: [
       { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
       { name: 'Express', icon: SiExpress, color: '#FFFFFF' },
-      { name: 'Java', icon: FaJava, color: '#ED8B00' },
       { name: 'Spring Boot', icon: SiSpringboot, color: '#6DB33F' },
+      { name: 'Java', icon: FaJava, color: '#ED8B00' },
       { name: 'Python', icon: SiPython, color: '#3776AB' },
     ],
   },
@@ -104,9 +104,9 @@ const skillCategories = [
 ]
 
 const achievements = [
-  { number: '01', title: '5⭐', subtitle: 'CodeChef (2109)', icon: SiCodechef },
-  { number: '02', title: '1552+', subtitle: 'LeetCode Rating', icon: SiLeetcode },
-  { number: '03', title: '1570', subtitle: 'Codeforces Rating', icon: SiCodeforces },
+  { number: '01', title: '5⭐', subtitle: 'CodeChef Div 1 (2109) | Global Rank 3', icon: SiCodechef },
+  { number: '02', title: '1717', subtitle: 'LeetCode Rating | 260+ Solved', icon: SiLeetcode },
+  { number: '03', title: '1570', subtitle: 'Codeforces Rating | Best Rank 139', icon: SiCodeforces },
 ]
 
 // ============ PROFESSIONAL ANIMATION VARIANTS ============
@@ -1391,7 +1391,7 @@ export default function Portfolio() {
                     transition={{ delay: 0.1 }}
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2 flex-shrink-0" />
-                    <span>Developed full-stack applications using React, Node.js, MongoDB, and REST APIs.</span>
+                    <span>Contributed to the development of full-stack web applications using React, Node.js, MongoDB, and RESTful APIs in a collaborative environment.</span>
                   </motion.li>
                   <motion.li
                     className="flex items-start gap-3"
@@ -1401,7 +1401,7 @@ export default function Portfolio() {
                     transition={{ delay: 0.2 }}
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2 flex-shrink-0" />
-                    <span>Optimized deployment pipelines and implemented Git-based version control and secure API integrations.</span>
+                    <span>Assisted in optimizing deployment workflows and implemented Git-based version control along with secure API integrations.</span>
                   </motion.li>
                   <motion.li
                     className="flex items-start gap-3"
@@ -1411,7 +1411,7 @@ export default function Portfolio() {
                     transition={{ delay: 0.3 }}
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2 flex-shrink-0" />
-                    <span>Led the development of Fusion Forge PCs, integrating user authentication, Razorpay payments, and an admin dashboard.</span>
+                    <span>Took ownership of end-to-end development for the Fusion Forge PCs platform, coordinating frontend features, backend services, and admin functionalities.</span>
                   </motion.li>
                 </ul>
               </motion.div>
