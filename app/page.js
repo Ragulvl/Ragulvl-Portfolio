@@ -32,7 +32,13 @@ const personalInfo = {
   location: 'Coimbatore, India',
   github: 'https://github.com/ragulvl',
   linkedin: 'https://linkedin.com/in/ragulvl',
-  image: '/profile.jpg',
+  image: '/Ragulvl-Portfolio/profile.jpg',
+}
+
+const emailConfig = {
+  serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'service_0i693ai',
+  templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
+  publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY',
 }
 
 const education = {
@@ -743,17 +749,35 @@ const ContactForm = () => {
     e.preventDefault()
     setStatus('submitting')
 
+    console.log('Sending email using config:', {
+      serviceId: emailConfig.serviceId,
+      templateId: emailConfig.templateId,
+      publicKeyLength: emailConfig.publicKey ? emailConfig.publicKey.length : 0,
+    })
+
     try {
-      const response = await fetch('https://formspree.io/f/meegyojq', {
+      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          service_id: emailConfig.serviceId,
+          template_id: emailConfig.templateId,
+          user_id: emailConfig.publicKey,
+          template_params: {
+            from_name: formData.name,
+            from_email: formData.email,
+            message: formData.message,
+            to_name: personalInfo.name,
+          }
+        }),
       })
 
       if (response.ok) {
         setStatus('success')
         setFormData({ name: '', email: '', message: '' })
       } else {
+        const errorText = await response.text()
+        console.error('EmailJS Error Response:', errorText)
         setStatus('error')
       }
     } catch (error) {
