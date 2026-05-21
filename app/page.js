@@ -3,13 +3,14 @@
 import { useEffect, useState, useRef } from 'react'
 import {
   motion, useScroll, useTransform, useSpring, useInView,
-  useMotionValue, useVelocity, useAnimationFrame
+  AnimatePresence
 } from 'framer-motion'
 import { gsap } from 'gsap'
 import Lenis from 'lenis'
 import {
   Mail, Phone, MapPin, Github, Linkedin,
-  Send, ArrowDown, ChevronRight, Download, Briefcase, ArrowUpRight
+  Send, ArrowDown, ChevronRight, Download, Briefcase, ArrowUpRight,
+  Menu, X, Award, Trophy, Users
 } from 'lucide-react'
 import {
   SiReact, SiNodedotjs, SiPython, SiJavascript, SiTypescript,
@@ -25,7 +26,7 @@ const personalInfo = {
   lastName: 'VL',
   role: 'Full Stack Developer | AI & Data Science Engineer | Solving Real-World Problems Through Scalable Products',
   tagline: 'B.Tech AI & DS @ KIT Coimbatore',
-  resumeLink: 'https://drive.google.com/file/d/1_WL7_iCNwi5gKBf169Yq3wdBiXPZLO7B/view?usp=drive_link',
+  resumeLink: 'https://drive.google.com/uc?export=download&id=1_WL7_iCNwi5gKBf169Yq3wdBiXPZLO7B',
   email: 'ragulkamelash@gmail.com',
   phone: '+91 9626199577',
   location: 'Coimbatore, India',
@@ -107,6 +108,25 @@ const achievements = [
   { number: '01', title: '5⭐', subtitle: 'CodeChef Div 1 (2109) | Global Rank 3', icon: SiCodechef },
   { number: '02', title: '1717', subtitle: 'LeetCode Rating | 260+ Solved', icon: SiLeetcode },
   { number: '03', title: '1570', subtitle: 'Codeforces Rating | Best Rank 139', icon: SiCodeforces },
+]
+
+const certifications = [
+  'AWS Academy Graduate – Cloud Foundations',
+  'Approximation Algorithms and Linear Programming',
+  'Algorithms for Searching, Sorting, and Indexing',
+  'Dynamic Programming & Greedy Algorithms',
+  'Advanced Linear Models for Data Science 1 & 2',
+]
+
+const detailedAchievements = [
+  '1st Place – Code Relay Coding Competition, Karpagam College of Engineering',
+  'Promoted to CodeChef Division 1, reflecting strong competitive problem-solving skills',
+  'Top 16 Rank – College-level Codethon Programming Contest',
+]
+
+const leadership = [
+  'Mentored peers in competitive programming and placement-oriented problem-solving',
+  'Demonstrated rapid learning by independently adapting to new technologies through hands-on projects',
 ]
 
 // ============ PROFESSIONAL ANIMATION VARIANTS ============
@@ -1021,6 +1041,7 @@ export default function Portfolio() {
   const containerRef = useRef(null)
   const { scrollYProgress } = useScroll()
   const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30 })
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   // Lenis smooth scroll
   useEffect(() => {
@@ -1109,8 +1130,82 @@ export default function Portfolio() {
               </MagneticButton>
             ))}
           </div>
+
+          {/* Mobile hamburger */}
+          <motion.button
+            className="md:hidden relative z-50 w-10 h-10 flex items-center justify-center rounded-lg border border-neutral-800 text-neutral-400 hover:text-amber-400 hover:border-amber-500/50 transition-colors"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            whileTap={{ scale: 0.9 }}
+            aria-label="Toggle navigation menu"
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </motion.button>
         </div>
       </motion.nav>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-30 backdrop-blur-xl bg-neutral-950/90 flex items-center justify-center"
+          >
+            <motion.div
+              className="flex flex-col items-center gap-8"
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.1, delayChildren: 0.1 }
+                }
+              }}
+            >
+              {['Work', 'Skills', 'About', 'Contact'].map((item) => (
+                <motion.button
+                  key={item}
+                  onClick={() => {
+                    scrollToSection(item.toLowerCase())
+                    setMobileMenuOpen(false)
+                  }}
+                  className="text-3xl font-bold text-neutral-300 hover:text-amber-400 transition-colors"
+                  variants={{
+                    hidden: { opacity: 0, y: 30 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } }
+                  }}
+                >
+                  {item}
+                </motion.button>
+              ))}
+
+              <motion.div
+                className="w-16 h-[1px] bg-gradient-to-r from-transparent via-amber-500/50 to-transparent"
+                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
+              />
+
+              <motion.div
+                className="flex items-center gap-6"
+                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
+              >
+                <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-amber-400 transition-colors" aria-label="GitHub">
+                  <Github className="w-5 h-5" />
+                </a>
+                <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-amber-400 transition-colors" aria-label="LinkedIn">
+                  <Linkedin className="w-5 h-5" />
+                </a>
+                <a href={`mailto:${personalInfo.email}`} className="text-neutral-400 hover:text-amber-400 transition-colors" aria-label="Email">
+                  <Mail className="w-5 h-5" />
+                </a>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* ========== HERO ========== */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -1196,6 +1291,7 @@ export default function Portfolio() {
                 className="mb-8"
               >
                 <p className="text-xl md:text-2xl text-neutral-400">{personalInfo.role}</p>
+                <p className="text-sm md:text-base text-amber-400/70 font-mono mt-2">{personalInfo.tagline}</p>
               </motion.div>
 
               <motion.div
@@ -1492,6 +1588,108 @@ export default function Portfolio() {
         </div>
       </section>
 
+      {/* ========== CERTIFICATIONS ========== */}
+      <section className="py-24 bg-neutral-900/30 relative z-10">
+        <div className="container mx-auto px-6">
+          <div className="mb-12 text-center">
+            <DirectionalText>
+              <span className="text-amber-400 font-mono text-sm tracking-[0.3em]">CREDENTIALS</span>
+            </DirectionalText>
+            <DirectionalText className="mt-4">
+              <h2 className="text-4xl md:text-5xl font-black">
+                <StaggerText text="Certifications" />
+              </h2>
+            </DirectionalText>
+          </div>
+
+          <div className="max-w-3xl mx-auto space-y-3">
+            {certifications.map((cert, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="flex items-center gap-4 p-4 bg-neutral-900/50 border border-neutral-800/50 rounded-xl hover:border-amber-500/30 transition-colors group"
+              >
+                <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+                  <Award className="w-5 h-5 text-amber-400" />
+                </div>
+                <span className="text-neutral-300 group-hover:text-white transition-colors">{cert}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========== ACHIEVEMENTS ========== */}
+      <section className="py-24 relative z-10">
+        <div className="container mx-auto px-6">
+          <div className="mb-12 text-center">
+            <DirectionalText>
+              <span className="text-amber-400 font-mono text-sm tracking-[0.3em]">RECOGNITION</span>
+            </DirectionalText>
+            <DirectionalText className="mt-4">
+              <h2 className="text-4xl md:text-5xl font-black">
+                <StaggerText text="Achievements" />
+              </h2>
+            </DirectionalText>
+          </div>
+
+          <div className="max-w-3xl mx-auto space-y-3">
+            {detailedAchievements.map((achievement, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="flex items-start gap-4 p-4 bg-neutral-900/50 border border-neutral-800/50 rounded-xl hover:border-amber-500/30 transition-colors group"
+              >
+                <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Trophy className="w-5 h-5 text-amber-400" />
+                </div>
+                <span className="text-neutral-300 group-hover:text-white transition-colors">{achievement}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========== LEADERSHIP ========== */}
+      <section className="py-24 bg-neutral-900/30 relative z-10">
+        <div className="container mx-auto px-6">
+          <div className="mb-12 text-center">
+            <DirectionalText>
+              <span className="text-amber-400 font-mono text-sm tracking-[0.3em]">LEADERSHIP</span>
+            </DirectionalText>
+            <DirectionalText className="mt-4">
+              <h2 className="text-4xl md:text-5xl font-black">
+                <StaggerText text="Activities" />
+              </h2>
+            </DirectionalText>
+          </div>
+
+          <div className="max-w-3xl mx-auto space-y-3">
+            {leadership.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="flex items-start gap-4 p-4 bg-neutral-900/50 border border-neutral-800/50 rounded-xl hover:border-amber-500/30 transition-colors group"
+              >
+                <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Users className="w-5 h-5 text-amber-400" />
+                </div>
+                <span className="text-neutral-300 group-hover:text-white transition-colors">{item}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Marquee 2 */}
       <div className="py-10 overflow-hidden">
         <MarqueeText direction={-1} baseSpeed={60}>
@@ -1576,6 +1774,7 @@ export default function Portfolio() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={social.label}
                   className="w-12 h-12 rounded-full border border-neutral-800 flex items-center justify-center text-neutral-400 hover:text-amber-400 hover:border-amber-500/50 transition-colors relative group"
                   variants={staggerItem}
                   whileHover={{ y: -5, scale: 1.1 }}
