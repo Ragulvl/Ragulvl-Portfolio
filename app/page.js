@@ -32,7 +32,7 @@ const personalInfo = {
   location: 'Coimbatore, India',
   github: 'https://github.com/ragulvl',
   linkedin: 'https://linkedin.com/in/ragulvl',
-  image: '/Ragulvl-Portfolio/profile.jpg',
+  image: '/profile.jpg',
 }
 
 const education = {
@@ -1045,6 +1045,37 @@ const AchievementCard = ({ item, index }) => {
   )
 }
 
+// ============ BACK TO TOP ============
+const BackToTop = () => {
+  const [show, setShow] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setShow(window.scrollY > 500)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  return (
+    <AnimatePresence>
+      {show && (
+        <motion.button
+          key="back-to-top"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0 }}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 text-neutral-950 flex items-center justify-center shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 transition-shadow cursor-pointer"
+          whileHover={{ scale: 1.1, y: -2 }}
+          whileTap={{ scale: 0.9 }}
+          aria-label="Back to top"
+        >
+          <ArrowDown className="w-5 h-5 rotate-180" />
+        </motion.button>
+      )}
+    </AnimatePresence>
+  )
+}
+
 // ============ MAIN COMPONENT ============
 export default function Portfolio() {
   const { scrollDir } = useScrollDirection()
@@ -1411,17 +1442,32 @@ export default function Portfolio() {
       {/* ========== ABOUT ========== */}
       <section className="py-20 relative z-10">
         <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
+              className="relative"
             >
-              <span className="text-amber-400 font-mono text-sm tracking-[0.3em]">ABOUT ME</span>
-              <p className="text-lg md:text-xl text-neutral-400 leading-relaxed mt-6">
-                {aboutBio}
-              </p>
+              {/* Ambient glow */}
+              <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-64 h-64 bg-amber-500/5 rounded-full blur-[100px] pointer-events-none" />
+
+              {/* Glass card */}
+              <div className="relative p-8 md:p-12 rounded-3xl bg-gradient-to-br from-neutral-900/80 to-neutral-950/80 border border-neutral-800/50 backdrop-blur-sm overflow-hidden">
+                {/* Gradient accent line */}
+                <div className="absolute left-0 top-8 bottom-8 w-1 bg-gradient-to-b from-amber-400 via-orange-400 to-transparent rounded-full" />
+
+                {/* Decorative quote mark */}
+                <span className="absolute top-4 right-8 text-[120px] md:text-[180px] font-serif text-amber-500/5 leading-none select-none pointer-events-none">&ldquo;</span>
+
+                <div className="relative z-10 pl-6">
+                  <span className="text-amber-400 font-mono text-sm tracking-[0.3em]">ABOUT ME</span>
+                  <p className="text-lg md:text-xl text-neutral-300 leading-relaxed mt-6 font-light">
+                    {aboutBio}
+                  </p>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -1567,39 +1613,59 @@ export default function Portfolio() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-amber-500 via-amber-500/50 to-transparent" />
+              {/* Ambient glow */}
+              <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-48 h-48 bg-amber-500/5 rounded-full blur-[80px] pointer-events-none" />
 
-              <motion.div
-                className="ml-6 md:ml-20 p-6 md:p-8 bg-neutral-900/50 border border-neutral-800 rounded-2xl relative"
-                whileHover={{ borderColor: 'rgba(212, 165, 116, 0.3)', x: 5 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="absolute -left-[30px] md:-left-[52px] top-8 w-4 h-4 rounded-full bg-amber-500 border-4 border-neutral-950" />
+              <div className="relative p-8 md:p-10 rounded-3xl bg-gradient-to-br from-neutral-900/80 to-neutral-950/80 border border-neutral-800/50 backdrop-blur-sm overflow-hidden">
+                {/* Decorative corner accent */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-amber-500/5 to-transparent rounded-bl-[100px]" />
 
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center">
+                <div className="flex flex-col md:flex-row items-center gap-8">
+                  {/* CGPA Ring */}
+                  <motion.div
+                    className="relative w-28 h-28 flex-shrink-0"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
+                      <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(64,64,64,0.3)" strokeWidth="6" />
+                      <motion.circle
+                        cx="50" cy="50" r="42" fill="none"
+                        stroke="url(#cgpaGradient)" strokeWidth="6"
+                        strokeLinecap="round"
+                        strokeDasharray={`${(parseFloat(education.cgpa) / 10) * 264} 264`}
+                        initial={{ strokeDashoffset: 264 }}
+                        whileInView={{ strokeDashoffset: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.5, ease: "easeOut" }}
+                      />
+                      <defs>
+                        <linearGradient id="cgpaGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="#D97706" />
+                          <stop offset="100%" stopColor="#F59E0B" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                      <span className="text-2xl font-black text-amber-400">{education.cgpa}</span>
+                      <span className="text-[10px] text-neutral-500 uppercase tracking-wider">CGPA</span>
+                    </div>
+                  </motion.div>
+
+                  {/* Details */}
+                  <div className="flex-1 text-center md:text-left">
+                    <div className="flex items-center gap-3 justify-center md:justify-start mb-2">
                       <GraduationCap className="w-5 h-5 text-amber-400" />
+                      <span className="text-neutral-500 text-sm font-mono">{education.year}</span>
                     </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-white">{education.degree}</h3>
-                      <p className="text-amber-400 font-medium">{education.college}</p>
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-1">{education.degree}</h3>
+                    <p className="text-amber-400/80 font-medium mb-3">{education.college}</p>
+                    <div className="flex items-center gap-2 justify-center md:justify-start">
+                      <MapPin className="w-4 h-4 text-neutral-500" />
+                      <span className="text-neutral-500 text-sm">{education.location}</span>
                     </div>
-                  </div>
-                  <span className="text-neutral-500 text-sm font-mono">{education.year}</span>
-                </div>
-
-                <div className="flex flex-wrap gap-4 text-sm">
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-amber-400/60" />
-                    <span className="text-neutral-400">{education.location}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-neutral-500">CGPA:</span>
-                    <span className="text-amber-400 font-semibold">{education.cgpa}</span>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -1906,6 +1972,9 @@ export default function Portfolio() {
           </motion.div>
         </div>
       </footer>
+
+      {/* ========== BACK TO TOP ========== */}
+      <BackToTop />
     </div>
   )
 }
