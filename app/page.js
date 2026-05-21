@@ -1655,127 +1655,119 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* ========== ACHIEVEMENTS ========== */}
+      {/* ========== ABOUT — UNIFIED SECTION ========== */}
       <section id="about" className="py-24 relative z-10">
         <div className="container mx-auto px-6">
-          <div className="mb-12 text-center">
+          <div className="mb-16 text-center">
             <DirectionalText>
-              <span className="text-amber-400 font-mono text-sm tracking-[0.3em]">COMPETITIVE PROGRAMMING</span>
+              <span className="text-amber-400 font-mono text-sm tracking-[0.3em]">ABOUT ME</span>
             </DirectionalText>
             <DirectionalText className="mt-4">
-              <h2 className="text-4xl md:text-5xl font-black">
-                <StaggerText text="Milestones" />
+              <h2 className="text-5xl md:text-7xl font-black">
+                <StaggerText text="Highlights" />
               </h2>
             </DirectionalText>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-4 max-w-3xl mx-auto">
-            {achievements.map((item, i) => (
-              <AchievementCard key={i} item={item} index={i} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ========== CERTIFICATIONS ========== */}
-      <section className="py-24 bg-neutral-900/30 relative z-10">
-        <div className="container mx-auto px-6">
-          <div className="mb-12 text-center">
-            <DirectionalText>
-              <span className="text-amber-400 font-mono text-sm tracking-[0.3em]">CREDENTIALS</span>
-            </DirectionalText>
-            <DirectionalText className="mt-4">
-              <h2 className="text-4xl md:text-5xl font-black">
-                <StaggerText text="Certifications" />
-              </h2>
-            </DirectionalText>
+          {/* CP Milestones */}
+          <div className="mb-16">
+            <h3 className="text-sm font-mono text-amber-400/70 uppercase tracking-[0.2em] mb-6 text-center">Competitive Programming</h3>
+            <div className="grid md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+              {achievements.map((item, i) => (
+                <AchievementCard key={i} item={item} index={i} />
+              ))}
+            </div>
           </div>
 
-          <div className="max-w-3xl mx-auto space-y-3">
-            {certifications.map((cert, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="flex items-center gap-4 p-4 bg-neutral-900/50 border border-neutral-800/50 rounded-xl hover:border-amber-500/30 transition-colors group"
-              >
-                <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0">
-                  <Award className="w-5 h-5 text-amber-400" />
-                </div>
-                <span className="text-neutral-300 group-hover:text-white transition-colors">{cert}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+          <LineReveal className="mb-16" />
 
-      {/* ========== ACHIEVEMENTS ========== */}
-      <section className="py-24 relative z-10">
-        <div className="container mx-auto px-6">
-          <div className="mb-12 text-center">
-            <DirectionalText>
-              <span className="text-amber-400 font-mono text-sm tracking-[0.3em]">RECOGNITION</span>
-            </DirectionalText>
-            <DirectionalText className="mt-4">
-              <h2 className="text-4xl md:text-5xl font-black">
-                <StaggerText text="Achievements" />
-              </h2>
-            </DirectionalText>
-          </div>
+          {/* Achievements + Certifications Grid */}
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
+            {/* Achievements */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                <Trophy className="w-5 h-5 text-amber-400" />
+                Achievements
+              </h3>
+              <div className="space-y-3">
+                {detailedAchievements.map((achievement, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: i * 0.1 }}
+                    className="flex items-start gap-3 p-3 bg-neutral-900/50 border border-neutral-800/50 rounded-xl hover:border-amber-500/30 transition-colors group"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2 flex-shrink-0" />
+                    <span className="text-neutral-300 text-sm group-hover:text-white transition-colors">{achievement}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
 
-          <div className="max-w-3xl mx-auto space-y-3">
-            {detailedAchievements.map((achievement, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="flex items-start gap-4 p-4 bg-neutral-900/50 border border-neutral-800/50 rounded-xl hover:border-amber-500/30 transition-colors group"
-              >
-                <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Trophy className="w-5 h-5 text-amber-400" />
-                </div>
-                <span className="text-neutral-300 group-hover:text-white transition-colors">{achievement}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ========== LEADERSHIP ========== */}
-      <section className="py-24 bg-neutral-900/30 relative z-10">
-        <div className="container mx-auto px-6">
-          <div className="mb-12 text-center">
-            <DirectionalText>
-              <span className="text-amber-400 font-mono text-sm tracking-[0.3em]">LEADERSHIP</span>
-            </DirectionalText>
-            <DirectionalText className="mt-4">
-              <h2 className="text-4xl md:text-5xl font-black">
-                <StaggerText text="Activities" />
-              </h2>
-            </DirectionalText>
+            {/* Certifications */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                <Award className="w-5 h-5 text-amber-400" />
+                Certifications
+              </h3>
+              <div className="space-y-3">
+                {certifications.map((cert, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: i * 0.1 }}
+                    className="flex items-start gap-3 p-3 bg-neutral-900/50 border border-neutral-800/50 rounded-xl hover:border-amber-500/30 transition-colors group"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2 flex-shrink-0" />
+                    <span className="text-neutral-300 text-sm group-hover:text-white transition-colors">{cert}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </div>
 
-          <div className="max-w-3xl mx-auto space-y-3">
-            {leadership.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="flex items-start gap-4 p-4 bg-neutral-900/50 border border-neutral-800/50 rounded-xl hover:border-amber-500/30 transition-colors group"
-              >
-                <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Users className="w-5 h-5 text-amber-400" />
-                </div>
-                <span className="text-neutral-300 group-hover:text-white transition-colors">{item}</span>
-              </motion.div>
-            ))}
-          </div>
+          {/* Leadership */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="max-w-3xl mx-auto"
+          >
+            <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2 justify-center">
+              <Users className="w-5 h-5 text-amber-400" />
+              Leadership & Activities
+            </h3>
+            <div className="grid md:grid-cols-2 gap-3">
+              {leadership.map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                  className="flex items-start gap-3 p-3 bg-neutral-900/50 border border-neutral-800/50 rounded-xl hover:border-amber-500/30 transition-colors group"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2 flex-shrink-0" />
+                  <span className="text-neutral-300 text-sm group-hover:text-white transition-colors">{item}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
