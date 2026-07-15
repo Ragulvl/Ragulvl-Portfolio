@@ -15,7 +15,8 @@ import {
 import {
   SiReact, SiNodedotjs, SiPython, SiJavascript, SiTypescript,
   SiMongodb, SiMysql, SiSpringboot, SiGit, SiExpress, SiTailwindcss, SiNextdotjs,
-  SiCodechef, SiLeetcode, SiCodeforces, SiGithub, SiPostman
+  SiCodechef, SiLeetcode, SiCodeforces, SiGithub, SiPostman,
+  SiPostgresql, SiRedis, SiDocker
 } from 'react-icons/si'
 import { FaJava } from 'react-icons/fa'
 
@@ -26,7 +27,7 @@ const personalInfo = {
   lastName: 'VL',
   role: 'Full Stack Developer | AI & Data Science Engineer | Solving Real-World Problems Through Scalable Products',
   tagline: 'B.Tech AI & DS @ KIT Coimbatore',
-  resumeLink: 'https://drive.google.com/uc?export=download&id=1_WL7_iCNwi5gKBf169Yq3wdBiXPZLO7B',
+  resumeLink: 'https://drive.google.com/file/d/1_WL7_iCNwi5gKBf169Yq3wdBiXPZLO7B/view?usp=drive_link',
   email: 'ragulkamelash@gmail.com',
   phone: '+91 9626199577',
   location: 'Coimbatore, India',
@@ -46,7 +47,7 @@ const education = {
   college: 'Kalaignar Karunanidhi Institute of Technology (KIT)',
   location: 'Coimbatore, India',
   year: '2023 – 2027',
-  cgpa: '7.74',
+  cgpa: '7.45',
 }
 
 const aboutBio = 'A passionate Full Stack Developer and AI & Data Science undergraduate at KIT Coimbatore, driven by a love for building scalable, real-world products. With a strong foundation in competitive programming — rated 5★ on CodeChef (Div 1) and 1700+ on LeetCode — I bring problem-solving rigor to every project I build. From end-to-end e-commerce platforms to food-tech applications, I enjoy turning complex ideas into clean, performant code. Always learning, always shipping.'
@@ -54,30 +55,30 @@ const aboutBio = 'A passionate Full Stack Developer and AI & Data Science underg
 const projects = [
   {
     id: '01',
-    title: 'Fusion Forge PCs',
-    category: 'E-Commerce',
-    description: 'Built a full-stack custom PC e-commerce platform featuring secure user authentication and an admin dashboard. Integrated Razorpay payment gateway, automated email notifications, and role-based access control. Optimized backend APIs and MongoDB queries to improve performance, scalability, and system reliability.',
-    tech: ['React', 'Node.js', 'MongoDB', 'Razorpay'],
-    year: '2025',
-    link: 'https://fusionforge.onrender.com/',
-  },
-  {
-    id: '02',
     title: 'Dinez',
     category: 'Food Tech',
-    description: 'Designed and developed scalable backend APIs and database models using Express and MongoDB to support seamless ordering workflows. Implemented real-time user interactions and efficient state management using React and TypeScript. Engineered robust authentication, input validation, and centralized error handling to manage edge cases and ensure reliability.',
-    tech: ['React', 'TypeScript', 'Express', 'MongoDB'],
-    year: '2025',
+    description: 'Built a production-ready campus food ordering platform using PostgreSQL and MongoDB. Implemented real-time order tracking using Socket.IO and Redis. Integrated Razorpay and PhonePe payment gateways with secure authentication workflows. Designed CI/CD pipelines, monitoring systems, health checks, and load-testing infrastructure.',
+    tech: ['React', 'TypeScript', 'Express', 'PostgreSQL', 'MongoDB', 'Socket.IO', 'Redis'],
+    year: '2026',
     link: 'https://dinez.in/',
   },
   {
+    id: '02',
+    title: 'Thesium',
+    category: 'AI Platform',
+    description: 'Developed an AI-powered thesis generation platform with a multi-stage content pipeline. Engineered scalable BullMQ and Redis workflows for asynchronous processing. Implemented secure authentication, payment integration, and PostgreSQL database management. Established testing and CI/CD workflows for automated validation and deployment.',
+    tech: ['React', 'TypeScript', 'Express', 'PostgreSQL', 'BullMQ', 'Redis'],
+    year: '2026',
+    link: 'https://github.com/Ragulvl',
+  },
+  {
     id: '03',
-    title: 'To-Do List',
-    category: 'Desktop App',
-    description: 'Developed a desktop task management application supporting complete CRUD operations. Implemented server-side validation and an embedded H2 database for reliable data persistence. Followed a layered architecture with UI components, service layers, and repositories to ensure maintainability.',
-    tech: ['Java', 'Swing', 'H2 Database'],
-    year: '2025',
-    link: 'https://github.com/Ragulvl/todo-app',
+    title: 'Archon',
+    category: 'AI Engineering',
+    description: 'Built an AI software engineering platform powered by a multi-agent architecture. Designed orchestration workflows coordinating planning, architecture, and coding agents. Implemented scalable backend services and PostgreSQL data management. Deployed a production-ready platform with Redis caching and monitoring support.',
+    tech: ['React', 'TypeScript', 'Express', 'PostgreSQL', 'Redis', 'AI Agents'],
+    year: '2026',
+    link: 'https://github.com/Ragulvl',
   },
 ]
 
@@ -106,8 +107,10 @@ const skillCategories = [
   {
     title: 'Database',
     skills: [
+      { name: 'PostgreSQL', icon: SiPostgresql, color: '#336791' },
       { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
       { name: 'MySQL', icon: SiMysql, color: '#4479A1' },
+      { name: 'Redis', icon: SiRedis, color: '#DC382D' },
     ],
   },
   {
@@ -115,6 +118,7 @@ const skillCategories = [
     skills: [
       { name: 'Git', icon: SiGit, color: '#F05032' },
       { name: 'GitHub', icon: SiGithub, color: '#FFFFFF' },
+      { name: 'Docker', icon: SiDocker, color: '#2496ED' },
       { name: 'Postman', icon: SiPostman, color: '#FF6C37' },
     ],
   },
@@ -141,6 +145,7 @@ const detailedAchievements = [
 ]
 
 const leadership = [
+  'Secretary, YouTubers and Photography Club, Kalaignar Karunanidhi Institute of Technology',
   'Mentored peers in competitive programming and placement-oriented problem-solving',
   'Demonstrated rapid learning by independently adapting to new technologies through hands-on projects',
 ]
